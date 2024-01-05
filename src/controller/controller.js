@@ -1,4 +1,4 @@
-import { NewUrlSave } from "../service/service.js";
+import { NewUrlSave, SearchUrl } from "../service/service.js";
 
 const homePage = (req, res) => {
   return res.send("Pagina inicial");
@@ -33,9 +33,13 @@ const newUrl = async (req, res) => {
 
 const redirection = async(req, res) => {
   try {
-    const code = req.paramet.id
+    const code = req.params.id
+    const redUrl = await SearchUrl(code)
+
+    res.send(redUrl)
+
   } catch (error) {
-    
+    res.status(500).send({ msng: error.message });
   }
 }
 
