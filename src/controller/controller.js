@@ -31,4 +31,13 @@ const newUrl = async (req, res) => {
   }
 };
 
-export default { homePage, newUrl };
+const redirection = async(req, res) => {
+  try {
+    const code = req.paramet.id
+  } catch (error) {
+    
+  }
+}
+
+
+export default { homePage, newUrl, redirection };
