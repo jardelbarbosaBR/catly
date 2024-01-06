@@ -49,5 +49,18 @@ const redirection = async (req, res) => {
     res.status(500).send({ msng: error.message });
   }
 };
+''
+const statusUrl = async (req, res) => {
+  try {
+    const code = req.params.id;
+    const status = await SearchUrl(code);
 
-export default { homePage, newUrl, redirection };
+    res.status(200).send({
+      shortenedURL: `${status.shortenedURL}`,
+      views: `${status.views}`
+    })} catch(erro){
+      res.status(500).send({msng: erro.message})
+    }
+}
+
+export default { homePage, newUrl, redirection, statusUrl };
