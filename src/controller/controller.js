@@ -1,4 +1,4 @@
-import { NewUrlSave, SearchUrl } from "../service/service.js";
+import { NewUrlSave, SearchUrl, UpdateView } from "../service/service.js";
 
 const homePage = (req, res) => {
   return res.send("Pagina inicial");
@@ -16,32 +16,38 @@ const newUrl = async (req, res) => {
     }
 
     const url = req.body.url;
-    const code = generateCode();
-    const shortenedURL = process.env.DOMAIN + code;
+    const codeurl = generateCode();
+    const shortenedURL = process.env.DOMAIN + codeurl;
 
     await NewUrlSave({
       url,
-      code,
+      codeurl,
       shortenedURL,
     });
 
-    res.status(201).send({ msng: "URL encurtada com sucesso" });
+    res.status(201).send({
+      msng: "URL encurtada com sucesso",
+      shortenedURL: `${shortenedURL}`,
+    });
   } catch (error) {
     res.status(500).send({ msng: error.message });
   }
 };
 
-const redirection = async(req, res) => {
+const redirection = async (req, res) => {
   try {
-    const code = req.params.id
-    const redUrl = await SearchUrl(code)
+    const code = req.params.id;
+    const redUrl = await SearchUrl(code);
 
-    res.send(redUrl)
+    const view = redUrl.views;
+    const viewAt = view + 1;
 
+    await UpdateView(code, viewAt);
+
+    res.redirect(301, `${redUrl.url}`);
   } catch (error) {
     res.status(500).send({ msng: error.message });
   }
-}
-
+};
 
 export default { homePage, newUrl, redirection };
