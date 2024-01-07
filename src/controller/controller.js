@@ -1,4 +1,9 @@
-import { NewUrlSave, SearchUrl, UpdateView } from "../service/service.js";
+import {
+  NewUrlSave,
+  SearchUrl,
+  UpdateView,
+  UrlDelete,
+} from "../service/service.js";
 
 const homePage = (req, res) => {
   return res.send("Pagina inicial");
@@ -49,7 +54,7 @@ const redirection = async (req, res) => {
     res.status(500).send({ msng: error.message });
   }
 };
-''
+("");
 const statusUrl = async (req, res) => {
   try {
     const code = req.params.id;
@@ -57,10 +62,21 @@ const statusUrl = async (req, res) => {
 
     res.status(200).send({
       shortenedURL: `${status.shortenedURL}`,
-      views: `${status.views}`
-    })} catch(erro){
-      res.status(500).send({msng: erro.message})
-    }
-}
+      views: `${status.views}`,
+    });
+  } catch (erro) {
+    res.status(500).send({ msng: erro.message });
+  }
+};
 
-export default { homePage, newUrl, redirection, statusUrl };
+const urlDelete = async (req, res) => {
+  try {
+    const code = req.body.code;
+    await UrlDelete(code);
+    res.status(200).send({ mensagem: "Url encurtada deletada com sucesso" });
+  } catch (erro) {
+    res.status(500).send({ msng: erro.message });
+  }
+};
+
+export default { homePage, newUrl, redirection, statusUrl, urlDelete };
