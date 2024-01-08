@@ -54,7 +54,7 @@ const redirection = async (req, res) => {
     res.status(500).send({ msng: error.message });
   }
 };
-("");
+
 const statusUrl = async (req, res) => {
   try {
     const code = req.params.id;
