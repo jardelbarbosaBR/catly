@@ -1,16 +1,9 @@
 import {userCreate} from "../service/user.service.js";
 
-async function userSave(req, res){
+const userSave = async (req, res) =>{
     try{
         const {name, email, password} = req.body
 
-        if (!name || !email){
-            res.send({msn: "O nome do usuario e email são obrigatorio "})
-        }
-
-        if(!password){
-            res.send({msn: "Senha e obrigatorio"})
-        }
         await userCreate({
             name: name,
             email: email,
