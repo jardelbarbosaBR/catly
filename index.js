@@ -11,8 +11,9 @@ const port = process.env.PORT || 3000;
 
 DbConection();
 app.use(express.json());
-app.use('/', getRouter)
 app.use('/user', userRouter)
+app.use('/', getRouter)
+
 
 app.listen(port, () => {
   console.log(`Servidor esta rotando no http://localhost:${port}`);
