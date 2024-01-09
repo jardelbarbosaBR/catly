@@ -1,11 +1,13 @@
 import express from "express";
-const router = express.Router()
+const router = express.Router();
 
 // Middlewares
-import {validUser} from "../middlewares/user.middlewares.js";
+import { validUser } from "../middlewares/global.middlewares.js";
 // Controller
-import {userSave} from "../controller/user.controller.js";
+import {findUserController, userSave} from "../controller/user.controller.js";
 
-router.post('/', validUser,  userSave)
 
-export default router
+router.post("/", validUser, userSave);
+router.get('/search', findUserController)
+
+export default router;

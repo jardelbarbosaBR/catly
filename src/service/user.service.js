@@ -1,6 +1,6 @@
-import User from '../models/user.models.js'
+import User from "../models/user.models.js";
 
-const userCreate = async (body) => await User.create(body);
+const UserCreate = async (body) => await User.create(body);
+const findUser = async (id) => await User.findOne({email: id})
 
-
-export {userCreate}
+export { UserCreate, findUser };
