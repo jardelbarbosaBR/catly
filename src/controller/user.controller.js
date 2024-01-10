@@ -1,3 +1,5 @@
+
+///// IMPORTS SERVICE ///////
 import {
   findUser,
   UserCreate,
@@ -5,9 +7,12 @@ import {
   deleteOneUser,
 } from "../service/user.service.js";
 
+////////////////////////////////////////////////////////////////////////
 const userSave = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+
+
 
     await UserCreate({
       name: name,
@@ -20,6 +25,7 @@ const userSave = async (req, res) => {
   }
 };
 
+////////////////////////////////////////////////////////////////////////
 const findUserOne = async (req, res) => {
   try {
     const { email } = req.body;
@@ -43,6 +49,7 @@ const findUserOne = async (req, res) => {
   }
 };
 
+////////////////////////////////////////////////////////////////////////
 const findUserAll = async (req, res) => {
   try {
     const userAll = await findAll();
@@ -68,4 +75,6 @@ const deleteUser = async (req, res) => {
   }
 };
 
+
+///// EXPORTS ///////
 export { userSave, findUserOne, findUserAll, deleteUser };
