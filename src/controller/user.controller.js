@@ -14,9 +14,9 @@ const userSave = async (req, res) => {
       email: email,
       password: password,
     });
-    return res.status(201).send({ mensagem: "Usuario criado com sucesso" });
+    res.status(201).send({ mensagem: "Usuario criado com sucesso" });
   } catch (error) {
-    return res.send({ msn: error.mensagem });
+    res.send({ msn: error.mensagem });
   }
 };
 
