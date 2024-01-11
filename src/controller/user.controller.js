@@ -11,9 +11,7 @@ import {
 const userSave = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-
-
-
+    
     await UserCreate({
       name: name,
       email: email,
