@@ -4,6 +4,10 @@ const urlSchema = new mongoose.Schema({
   url: String,
   codeurl: String,
   shortenedURL: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
   views:{
     type: Number,
     default: 0

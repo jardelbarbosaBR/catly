@@ -3,7 +3,7 @@ import {
   SearchUrl,
   UpdateView,
   UrlDelete,
-} from "../service/service.js";
+} from "../service/url.service.js";
 
 const homePage = (req, res) => {
   return res.send("Pagina inicial");
@@ -28,6 +28,7 @@ const newUrl = async (req, res) => {
       url,
       codeurl,
       shortenedURL,
+      user: req.userId
     });
 
     res.status(201).send({

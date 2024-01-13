@@ -1,4 +1,4 @@
-import Url from "../models/models.js";
+import Url from "../models/url.models.js";
 
 const NewUrlSave = async (body) => await Url.create(body);
 const SearchUrl = async (id) => await Url.findOne({ codeurl: id });

@@ -2,7 +2,7 @@ import express from "express";
 import DbConection from "./src/db/db.js";
 import dotenv from "dotenv";
 
-import getRouter from './src/router/router.js';
+import getRouter from './src/router/url.router.js';
 import userRouter from './src/router/user.router.js'
 import authRouter from './src/router/auth.router.js'
 
