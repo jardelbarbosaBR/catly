@@ -1,8 +1,8 @@
 import { Router } from "express";
-const router = Router()
+const router = Router();
 
-import {login} from "../controller/auth.controller.js";
+import { login, authorization } from "../controller/auth.controller.js";
 
-router.post('/', login)
-
-export default router
+router.post("/", login);
+router.post("/verify", authorization);
+export default router;

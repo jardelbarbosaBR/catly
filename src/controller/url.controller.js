@@ -28,7 +28,7 @@ const newUrl = async (req, res) => {
       url,
       codeurl,
       shortenedURL,
-      user: req.userId
+      user: req.userId,
     });
 
     res.status(201).send({
@@ -64,6 +64,10 @@ const statusUrl = async (req, res) => {
     res.status(200).send({
       shortenedURL: `${status.shortenedURL}`,
       views: `${status.views}`,
+      user: {
+        name: `${status.user.name}`,
+        email: `${status.user.email}`,
+      },
     });
   } catch (erro) {
     res.status(500).send({ msng: erro.message });
