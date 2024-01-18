@@ -1,4 +1,3 @@
-
 ///// IMPORTS SERVICE ///////
 import {
   findUser,
@@ -11,13 +10,13 @@ import {
 const userSave = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    
+
     await UserCreate({
       name: name,
       email: email,
       password: password,
     });
-    return res.status(201).send({ mensagem: "Usuario criado com sucesso" });
+    return res.status(201).send({ msn: "Usuario criado com sucesso" });
   } catch (error) {
     return res.send({ msn: error.mensagem });
   }
@@ -72,7 +71,6 @@ const deleteUser = async (req, res) => {
     res.send({ msn: error.mensagem });
   }
 };
-
 
 ///// EXPORTS ///////
 export { userSave, findUserOne, findUserAll, deleteUser };
